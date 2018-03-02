@@ -5,18 +5,12 @@
     <title></title>
   </head>   
   <body>
-    <h1 id = "hello" ></h1>
-    <button type = "button" onclick = "one()">Hello</button>
     <script type = "text/javascript">
         var n = 0;
-        function helloScope() {
-          document.getElementById("hello").innerHTML = "Hello Scope" + n;
+        function writeHello(n) {
+          document.write("Hello Scope" + n);
         }
-        helloScope();
-        function one() {
-          n = 1;
-          document.getElementById("hello").innerHTML = "Hello Scope" + n;
-        }
+        writeHello(123);
       </script>
   </body>
 </html>
