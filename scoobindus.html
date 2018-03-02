@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <title></title>
   </head>   
-  <body>
+  <body onload="helloScope()">
     <h1 id="hello" ></h1>
+    <script type="text/javascript">
+        function helloScope(){
+            document.getElementById("hello").innerHTML = "Hello Scope";
+        }
+      </script>
   </body>
-  <script type="text/javascript">
-    document.getElementById("hello").innerHTML = "Hello Scope";
-  </script>
 </html>
