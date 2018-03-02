@@ -5,14 +5,14 @@
     <title></title>
   </head>   
   <body>
-    <h1 id = "hello" ></h1>
-    <button type="button" onclick=writeHello(123)>Hello</button>
-    <script type = "text/javascript">
-        var n = 0;
+    <h1 id="hello" ></h1>
+    <button type="button" onclick=writeHello("123")>Hello</button>
+    <script type="text/javascript">
+        var n = "0";
         function writeHello(n) {
-          document.getElementById("hello").innerHTML = "Hello Scope" + n;
+          document.getElementById("hello").innerHTML = "Hello Scope"+n
         }
-        writeHello(321);
+        writeHello("321");
       </script>
   </body>
 </html>
