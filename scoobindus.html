@@ -6,11 +6,17 @@
   </head>   
   <body>
     <h1 id="hello" ></h1>
+    <button type="button" onclick="one()">Hello</button>
     <script type="text/javascript">
+        var n;
         function helloScope(){
-            document.getElementById("hello").innerHTML = "Hello Scope";
+          document.getElementById("hello").innerHTML = "Hello Scope", n;
         }
         helloScope();
+        function one(){
+          n=1;
+          return n;
+        }
       </script>
   </body>
 </html>
