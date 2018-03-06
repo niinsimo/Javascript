@@ -17,7 +17,9 @@
 <body>
 
 <p>
-<button id="btn" type="button">move</button>
+<button id="up" type="button">up</button>
+<button id="down" type="button">down</button>
+<button id="stop" type="button">stop</button>
 <button id="btn2" type="button">rotate</button>
 </p> 
 
@@ -33,28 +35,46 @@ var l = 0;
 var action;
 var spin;
 var elem = document.getElementById("animate");
-var btn = document.getElementById("btn");
+var up = document.getElementById("up");
+var down = document.getElementById("down");
+var stop = document.getElementById("stop");
 var btn2 = document.getElementById("btn2");
 
-function moveOrStop() { 
+function moveUp(){
     clearInterval(id);
-    if (action == 'move'){
-        action = 'stop';
-    } else {
-        action = 'move';
-        id = setInterval(frame, 10); 
-        frame();
-    }
+    action = 'up';
+    id = setInterval(frame, 10); 
+    frame();
 }
+function moveDown(){
+    clearInterval(id);
+    action = 'down';
+    id = setInterval(frame, 10); 
+    frame();
+}
+function stopMoving(){
+    action = 'stop';
+}
+
 function frame() {
-    if (pos == 350) {
-        clearInterval(id);
-        pos = 0;
-    } else {
-        pos++; 
-        elem.style.top = pos + 'px'; 
-        elem.style.left = pos + 'px'; 
-    }  
+    if(action == 'up'){
+        if (pos == 0) {
+            clearInterval(id);
+            pos = 0;
+        } else {
+            pos--; 
+            elem.style.top = pos + 'px';  
+        }  
+    }
+    if(action == 'down'){
+        if (pos == 350) {
+            clearInterval(id);
+            pos = 0;
+        } else {
+            pos++; 
+            elem.style.top = pos + 'px';  
+        }  
+    }
 }
 function startSpinning(){
     clearInterval(id2);
@@ -73,7 +93,9 @@ function rotate() {
     var u = "rotate("+o+")";
     elem.style.transform = u;
 }
-btn.addEventListener('click', moveOrStop);
+up.addEventListener('click', moveUp);
+down.addEventListener('click', moveDown);
+stop.addEventListener('click', stopMoving);
 btn2.addEventListener('click', startSpinning);
 </script>
 
