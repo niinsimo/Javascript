@@ -18,6 +18,7 @@
 
 <p>
 <button id="btn" type="button">move</button>
+<button id="btn2" type="button">rotate</button>
 </p> 
 
 <div id ="container">
@@ -26,10 +27,14 @@
 
 <script>
 var pos = 0;
+var id = 0;
+var id2 = 0;
+var l = 0;
+var action;
+var spin;
 var elem = document.getElementById("animate");
 var btn = document.getElementById("btn");
-var action;
-var id = 0;
+var btn2 = document.getElementById("btn2");
 
 function moveOrStop() { 
     clearInterval(id);
@@ -37,26 +42,39 @@ function moveOrStop() {
         action = 'stop';
     } else {
         action = 'move';
+        id = setInterval(frame, 10); 
+        frame();
     }
-    btn.innerHTML = action;
-    id = setInterval(frame, 10); 
-    frame();
 }
 function frame() {
-    if(action == 'move'){
-        if (pos == 350) {
-            clearInterval(id);
-            pos = 0;
-        } else {
-            pos++; 
-            elem.style.top = pos + 'px'; 
-            elem.style.left = pos + 'px'; 
-        }
-    } else if(action == 'stop'){
-
+    if (pos == 350) {
+        clearInterval(id);
+        pos = 0;
+    } else {
+        pos++; 
+        elem.style.top = pos + 'px'; 
+        elem.style.left = pos + 'px'; 
+    }  
+}
+function startSpinning(){
+    clearInterval(id2);
+    if (spin == 'move'){
+        spin = 'stop';
+    } else {
+        spin = 'move';
+        id2 = setInterval(rotate, 5); 
+        rotate();
     }
 }
+function rotate() {
+    l++;
+    var e = 'deg';
+    var o = l+e;
+    var u = "rotate("+o+")";
+    elem.style.transform = u;
+}
 btn.addEventListener('click', moveOrStop);
+btn2.addEventListener('click', startSpinning);
 </script>
 
 </body>
