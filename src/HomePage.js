@@ -1,10 +1,16 @@
 import React from 'react';
-import LoginForm from './LoginForm';
 
 export class HomePage extends React.Component {
-  render() {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
         return (
-            <h1>{this.state.userInput}</h1>
+            <div>
+                <h1>Tere, </h1>
+                <h1>{this.props.username}</h1>
+            </div>
         );
     }
 }

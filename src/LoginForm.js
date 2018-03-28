@@ -1,21 +1,22 @@
 import React from 'react';
-import HomePage from './HomePage';
-import App from './App';
 
 export class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { userInput: ''};
     this.handleUserInput = this.handleUserInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   handleUserInput(e){
 	  this.setState({
 	    userInput: e.target.value
 	  });
   }
+
   handleSubmit(e){
-    this.showPage = this.showPage.bind(this);
-	  this.showPage = <HomePage />;
+    e.preventDefault();
+    this.props.onSubmit(this.state.userInput);
   }
 
   render() {
